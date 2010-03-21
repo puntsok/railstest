@@ -28,5 +28,9 @@ describe Person, "when first created" do
     @bossman.underlings << @underling2
     @bossman.underlings.size.should == 2
   end
-
+  it "should have a unique name" do
+    @underling.save # first record needs to be saved first!
+    @new_mr_low = Person.new :name => "Mr. Low" 
+    @new_mr_low.should_not be_valid
+  end
 end
